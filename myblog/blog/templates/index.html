@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Home Page</h1>
+<p>The website has the following articles:</p>
+    <ul>
+        <li><strong>Articles: </strong>{{ num_article }}</li>
+        <li><strong>Users: </strong>{{ num_user }}</li>
+    </ul>
+
+{% endblock %}
