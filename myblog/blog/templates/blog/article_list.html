@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>All Articles</h1>
+    <h1 align="center">All Articles</h1>
     <hr>
     <ul class="list-unstyled">
         {% for article in article_list %}
@@ -9,9 +9,37 @@
         <!--<img src="..." class="mr-3" alt="...">-->
         <div class="media-body">
             <h5><a class="mt-0 mb-1" href="{{ article.get_absolute_url }}">{{ article.title }}</a></h5>
-                <!--{{ article.context }}-->
+            <div align="right">Written by: {{ article.author }}, {{ article.upload_date }} </div>
+            <div align='right'>Points: {{ article.points }}</div>
             <hr>
         </div>
         {% endfor %}
     </ul>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            {% if is_paginated %}
+            <li class="page-item">
+                {% if page_obj.has_previous %}
+                <a class="page-link" href="{{ request.path }}?page={{ page_obj.previous_page_number }}" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+                {% endif %}
+            </li>
+            <li class="page-item"><a class="page-link" href="{{ request.path }}?page=1">1</a></li>
+            <li class="page-item"><a class="page-link" href="{{ request.path }}?page=2">2</a></li>
+            <li class="page-item"><a class="page-link" href="{{ request.path }}?page=3">3</a></li>
+            <li class="page-item">
+                {% if page_obj.has_next %}
+                <a class="page-link" href="{{ request.path }}?page={{ page_obj.next_page_number }}" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+                {% endif %}
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <form action="{% url 'index' %}">
+        <button type="submit" class="btn btn-dark btn-lg btn-block">Wrtie articles!</button>
+    </form>
 {% endblock %}

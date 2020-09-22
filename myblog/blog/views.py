@@ -20,7 +20,7 @@ def index(request):
 class ArticleView(generic.ListView):
     """Generic class-based view for a list of articles"""
     model = Article
-    paginate_by = 5
+    paginate_by = 4
 
 class ArticleContextView(generic.DetailView):
     """Generic class-based detail view for an article."""
