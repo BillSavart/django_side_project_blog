@@ -41,14 +41,14 @@
                 </li>
                 {% if user.is_authenticated %}
                 <li class="nav-item active">
-                    <a class="nav-link" href="">Hello, User: {{ user.get_username }}</a>
+                    <li class="nav-link active">Hello, User: {{ user.get_username }}</li>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="">Log Out</a>
+                    <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
                 </li>
                 {% else %}
                 <li class="nav-item active">
-                    <a class="nav-link" href="">Login</a>
+                    <a class="nav-link" href="{% url 'login' %}">Login</a>
                 </li>
                 {% endif %}
             </ul>

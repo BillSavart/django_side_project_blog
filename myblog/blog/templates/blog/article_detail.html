@@ -1,7 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>Title: {{ article.title }}</h1>
+    <h1>{{ article.title }}</h1>
+    <ul>
+        <li>Upload Date: {{ article.upload_date }}</li>
+        <li>Author: {{ article.author }}</li>
+        <li>Points: {{ article.points }}</li>
+    </ul>
+
     <p>
         {{ article.context }}
     </p>
+
 {% endblock %}
