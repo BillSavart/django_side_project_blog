@@ -7,8 +7,11 @@
         <li>Points: {{ article.points }}</li>
     </ul>
 
-    <p>
+    <p class="text-justify col-sm-8">
         {{ article.context }}
     </p>
 
+    <form action="{% url 'index' %}">
+        <button type="submit" class="btn btn-lg btn-secondary">Reply</button>
+    </form>
 {% endblock %}

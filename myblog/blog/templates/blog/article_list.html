@@ -25,9 +25,14 @@
                 </a>
                 {% endif %}
             </li>
-            <li class="page-item"><a class="page-link" href="{{ request.path }}?page=1">1</a></li>
-            <li class="page-item"><a class="page-link" href="{{ request.path }}?page=2">2</a></li>
-            <li class="page-item"><a class="page-link" href="{{ request.path }}?page=3">3</a></li>
+
+            {% for page in page_obj.paginator.page_range %}
+                {% if page_obj.number == page %}
+                    <li class="page-item active" aria-current="page"><a class="page-link" href="{{ request.path }}?page={{page}}">{{ page }}<span class="sr-only">(current)</span></a></li>
+                {% else %}
+                    <li class="page-item"><a class="page-link" href="{{ request.path}}?page={{page}}">{{ page }}</a></li>
+                {% endif %}
+            {% endfor %}
             <li class="page-item">
                 {% if page_obj.has_next %}
                 <a class="page-link" href="{{ request.path }}?page={{ page_obj.next_page_number }}" aria-label="Next">
