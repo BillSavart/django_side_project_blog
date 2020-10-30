@@ -10,8 +10,14 @@
     <p class="text-justify col-sm-8">
         {{ article.context }}
     </p>
+    
+    <hr>
+    {% for comment in reply %}
+    <p>{{ comment.author }} {{ comment.context }}</p>
+    <hr>
+    {% endfor %}
 
-    <form action="{% url 'index' %}">
+    <form action="{% url 'article-reply' article.id %}">
         <button type="submit" class="btn btn-lg btn-secondary">Reply</button>
     </form>
 {% endblock %}
